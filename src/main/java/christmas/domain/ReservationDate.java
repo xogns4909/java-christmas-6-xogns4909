@@ -3,10 +3,7 @@ package christmas.domain;
 import java.time.DateTimeException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.Month;
-import java.time.YearMonth;
-
 public class ReservationDate {
     private static final int YEAR = 2023;
     private static final Month MONTH = Month.DECEMBER;
@@ -29,6 +26,10 @@ public class ReservationDate {
 
     public DayOfWeek getDayOfWeek() {
         return dayOfWeek;
+    }
+
+    public int getDate(){
+        return date;
     }
 
 }
