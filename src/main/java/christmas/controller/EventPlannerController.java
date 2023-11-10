@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.Orders;
 import christmas.domain.ReservationDate;
 import view.inputView.Input;
 import view.outputView.Output;
@@ -21,7 +22,21 @@ public class EventPlannerController {
     public void run(){
         outputView.requestAnnounce(PrintMessages.WELCOME_MESSAGE.getMessage());
         requestReservationDate();
+        requestOrderMenu();
     }
+
+    private Orders requestOrderMenu() {
+        outputView.requestAnnounce(PrintMessages.ORDER_INPUT_INSTRUCTION.getMessage());
+        while (true) {
+            try {
+                return inputView.inputOrderItems();
+            }catch (IllegalArgumentException e){
+                outputView.displayErrorMessage(e.getMessage());
+            }
+        }
+    }
+
+
     public ReservationDate requestReservationDate(){
         outputView.requestAnnounce(PrintMessages.ASK_FOR_DATE.getMessage());
         while (true) {
