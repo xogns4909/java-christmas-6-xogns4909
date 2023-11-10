@@ -13,4 +13,8 @@ public class OutputView {
         output.print(announce);
     }
 
+    public void displayErrorMessage(String message){
+        output.print(PrintMessages.ERROR.getMessage() + message);
+    }
+
 }

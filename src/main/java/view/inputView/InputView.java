@@ -11,4 +11,8 @@ public class InputView {
         this.input = input;
     }
 
+    public int inputReservationDate(){
+        String date = input.input();
+        return StringToIntegerConvertor.convert(date);
+    }
 }
