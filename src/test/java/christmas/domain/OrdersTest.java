@@ -56,4 +56,23 @@ class OrdersTest {
                 )
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("provideOrdersForTotalPrice")
+    @DisplayName("다양한 주문 항목에 대한 총 금액 계산")
+    void testGetTotalPrice(List<OrderItem> orderItems, int expectedTotalPrice) {
+        Orders orders = new Orders(orderItems);
+        int totalPrice = orders.getTotalPrice();
+        assertThat(totalPrice).isEqualTo(expectedTotalPrice);
+    }
+
+    private static Stream<Object[]> provideOrdersForTotalPrice() {
+        return Stream.of(
+                new Object[]{List.of(new OrderItem(MenuItem.MUSHROOM_SOUP, 2),
+                        new OrderItem(MenuItem.T_BONE_STEAK, 1)), 67000},
+                new Object[]{List.of(new OrderItem(MenuItem.TAPAS, 3),
+                        new OrderItem(MenuItem.CAESAR_SALAD, 2)), 32500}
+        );
+    }
+
 }

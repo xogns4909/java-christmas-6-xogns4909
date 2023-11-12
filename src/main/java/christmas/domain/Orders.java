@@ -5,7 +5,6 @@ import static christmas.domain.DomainErrorMessages.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class Orders {
 
     private final List<OrderItem> orderItems;
@@ -17,8 +16,14 @@ public class Orders {
         this.orderItems = new ArrayList<>(orderItems);
     }
 
+    public int getTotalPrice() {
+        return orderItems.stream()
+                .mapToInt(order -> order.getMenuItem().getPrice() * order.getQuantity())
+                .sum();
+    }
+
     private void validateUniqueItems(List<OrderItem> orderItems) {
-        int uniqueItemsCount = (int)orderItems.stream()
+        int uniqueItemsCount = (int) orderItems.stream()
                 .map(OrderItem::getMenuItem)
                 .distinct()
                 .count();
@@ -26,6 +31,7 @@ public class Orders {
             throw new IllegalArgumentException(DUPLICATE_MENU_ITEM.getMessage());
         }
     }
+
     private void validateMaxQuantity(List<OrderItem> orderItems) {
         int sum = orderItems.stream()
                 .mapToInt(OrderItem::getQuantity)
@@ -44,6 +50,7 @@ public class Orders {
             throw new IllegalArgumentException(ONLY_BEVERAGES_NOT_ALLOWED.getMessage());
         }
     }
+
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
