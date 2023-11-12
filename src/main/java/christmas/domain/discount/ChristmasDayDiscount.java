@@ -7,7 +7,6 @@ import static christmas.domain.discount.DiscountConfig.*;
 import christmas.domain.Orders;
 import christmas.domain.ReservationDate;
 import java.time.LocalDate;
-import java.time.Month;
 
 public class ChristmasDayDiscount implements Discount {
 
@@ -26,6 +25,11 @@ public class ChristmasDayDiscount implements Discount {
         }
 
         return calculateDiscountAmount(reservationDate);
+    }
+
+    @Override
+    public DiscountType getType() {
+        return DiscountType.CHRISTMAS_DAY;
     }
 
     private boolean isWithinEventPeriod(LocalDate date) {

@@ -23,6 +23,12 @@ public class SpecialDiscount implements Discount {
         }
         return 0L;
     }
+
+    @Override
+    public DiscountType getType() {
+        return DiscountType.SPECIAL;
+    }
+
     private boolean isSpecialDay(LocalDate date) {
         return date.equals(CHRISTMAS) || date.getDayOfWeek().equals(DayOfWeek.SUNDAY);
     }

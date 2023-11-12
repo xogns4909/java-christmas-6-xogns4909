@@ -5,4 +5,6 @@ import christmas.domain.ReservationDate;
 
 public interface Discount {
     long calculateDiscount(Orders orders, ReservationDate date);
+
+    DiscountType getType();
 }

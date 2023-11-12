@@ -4,7 +4,9 @@ import static christmas.domain.discount.DiscountConfig.*;
 
 import christmas.domain.Orders;
 import christmas.domain.ReservationDate;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DiscountService {
 
@@ -19,12 +21,13 @@ public class DiscountService {
         );
     }
 
-    public long calculateTotalDiscount(Orders orders, ReservationDate date) {
-        if(orders.getTotalPrice() > MINIMUM_DISCOUNT_ORDER_AMOUNT.getDiscountAmount()) {
-            return discounts.stream()
-                    .mapToLong(discount -> discount.calculateDiscount(orders, date))
-                    .sum();
+    public DiscountDetails calculateTotalDiscount(Orders orders, ReservationDate date) {
+        if (orders.getTotalPrice() > MINIMUM_DISCOUNT_ORDER_AMOUNT.getDiscountAmount()) {
+            List<DiscountDetail> discountDetails = discounts.stream()
+                    .map(discount -> new DiscountDetail(discount.getType(), discount.calculateDiscount(orders, date)))
+                    .collect(Collectors.toList());
+            return new DiscountDetails(discountDetails);
         }
-        return 0L;
+        return new DiscountDetails(Collections.emptyList());
     }
 }
