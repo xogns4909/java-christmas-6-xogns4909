@@ -16,12 +16,12 @@ public class ChristmasDayDiscount implements Discount {
             EVENT_MONTH.getValue(), CHRISTMAS_EVENT_END_DAY.getValue());
 
     @Override
-    public long calculateDiscount(Orders orders, ReservationDate date) {
+    public int calculateDiscount(Orders orders, ReservationDate date) {
         LocalDate reservationDate = LocalDate.of(EVENT_YEAR.getValue(), EVENT_MONTH.getValue(),
                 date.getDate());
 
         if (!isWithinEventPeriod(reservationDate)) {
-            return 0L;
+            return 0;
         }
 
         return calculateDiscountAmount(reservationDate);
@@ -36,9 +36,9 @@ public class ChristmasDayDiscount implements Discount {
         return !date.isBefore(START_DATE) && !date.isAfter(END_DATE);
     }
 
-    private long calculateDiscountAmount(LocalDate date) {
+    private int calculateDiscountAmount(LocalDate date) {
         int daysIntoEvent = date.getDayOfMonth() - START_DATE.getDayOfMonth();
-        return CHRISTMAS_BASE_DISCOUNT.getDiscountAmount() + ((long) daysIntoEvent
-                * DAILY_INCREMENT.getDiscountAmount());
+        return CHRISTMAS_BASE_DISCOUNT.getDiscountAmount() + daysIntoEvent
+                * DAILY_INCREMENT.getDiscountAmount();
     }
 }

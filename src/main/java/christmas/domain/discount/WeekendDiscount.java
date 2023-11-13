@@ -10,12 +10,12 @@ import java.time.DayOfWeek;
 public class WeekendDiscount implements Discount {
 
     @Override
-    public long calculateDiscount(Orders orders, ReservationDate date) {
+    public int calculateDiscount(Orders orders, ReservationDate date) {
         DayOfWeek dayOfWeek = date.getDayOfWeek();
         if (isWeekend(dayOfWeek)) {
             return calculateDiscountAmount(orders);
         }
-        return 0L;
+        return 0;
     }
 
     @Override
@@ -27,8 +27,8 @@ public class WeekendDiscount implements Discount {
         return dayOfWeek.equals(DayOfWeek.FRIDAY) || dayOfWeek.equals(DayOfWeek.SATURDAY);
     }
 
-    private long calculateDiscountAmount(Orders orders) {
-        return orders.getOrderItems().stream()
+    private int calculateDiscountAmount(Orders orders) {
+        return (int)orders.getOrderItems().stream()
                 .filter(orderItem -> "Main".equals(orderItem.getMenuItem().getCategory()))
                 .mapToLong(OrderItem::getQuantity)
                 .sum() * WEEKEND_MAIN_DISCOUNT.getDiscountAmount();

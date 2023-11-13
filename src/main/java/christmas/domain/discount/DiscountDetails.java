@@ -9,8 +9,8 @@ public record DiscountDetails(List<DiscountDetail> details) {
         this.details = new ArrayList<>(details);
     }
 
-    public long getTotalDiscount() {
-        return details.stream()
+    public int getTotalDiscount() {
+        return (int)details.stream()
                 .mapToLong(DiscountDetail::amount)
                 .sum();
     }

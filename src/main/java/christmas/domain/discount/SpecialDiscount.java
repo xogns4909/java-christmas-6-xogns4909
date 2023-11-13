@@ -14,14 +14,14 @@ public class SpecialDiscount implements Discount {
             EVENT_MONTH.getValue(),  CHRISTMAS_EVENT_END_DAY.getValue());
 
     @Override
-    public long calculateDiscount(Orders orders, ReservationDate date) {
+    public int calculateDiscount(Orders orders, ReservationDate date) {
         LocalDate reservationDate = LocalDate.of(EVENT_YEAR.getValue(), EVENT_MONTH.getValue(),
                 date.getDate());
 
         if (isSpecialDay(reservationDate)) {
             return SPECIAL_DISCOUNT_AMOUNT.getDiscountAmount();
         }
-        return 0L;
+        return 0;
     }
 
     @Override
