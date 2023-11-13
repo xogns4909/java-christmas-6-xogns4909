@@ -2,7 +2,13 @@ package util;
 
 public enum Constants {
     COMMA(","),
-    HYPHEN("-");
+    HYPHEN("-"),
+    SECTION_START("<"),
+    SECTION_END(">"),
+
+    SPACE(" "),
+
+    COLON(":");
 
     private final String value;
 
