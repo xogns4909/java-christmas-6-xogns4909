@@ -5,10 +5,7 @@ import christmas.domain.model.Orders;
 import christmas.domain.model.ReservationDate;
 import christmas.domain.model.Badge;
 import christmas.domain.discount.DiscountDetails;
-import view.outputView.outputFomatter.DiscountFormatter;
-import view.outputView.outputFomatter.GiftFormatter;
-import view.outputView.outputFomatter.MoneyFormatter;
-import view.outputView.outputFomatter.OrderFormatter;
+import view.outputView.outputFomatter.*;
 
 import static util.Constants.*;
 import static view.outputView.PrintMessages.*;
@@ -21,18 +18,11 @@ public class OutputView {
         this.output = output;
     }
 
-    public void displayEventDetails(ReservationDate reservationDate, Orders orders,
-            GiftDtos giftDtos, DiscountDetails discountDetails) {
-        printSectionHeader(
-                String.format(PREVIEW_EVENT_BENEFITS.getMessage(), reservationDate.getDate()));
-        displayOrdersSection(orders);
-        disPlayTotalOrderPrice(orders.getTotalPrice());
-        displayDiscountsSection(discountDetails);
-        displayGiftsSection(giftDtos);
-        disPlayTotalDiscount(discountDetails, giftDtos);
-        displayFinalFee(orders, discountDetails);
-        displayBadge(Badge.getBadgeForAmount(
-                orders.getTotalPrice() - discountDetails.getTotalDiscount()));
+    public void displayEventDetails(ReservationDate reservationDate, Orders orders
+            , GiftDtos giftDtos, DiscountDetails discountDetails) {
+        printEventHeader(reservationDate);
+        displayOrderDetails(orders);
+        displayDiscountDetails(discountDetails, giftDtos, orders.getTotalPrice());
     }
 
     public void requestAnnounce(String announce) {
@@ -41,6 +31,34 @@ public class OutputView {
 
     public void displayErrorMessage(String message) {
         output.print(ERROR.getMessage() + message);
+    }
+
+    private void printEventHeader(ReservationDate reservationDate) {
+        String eventHeader = String.format(PREVIEW_EVENT_BENEFITS.getMessage(),
+                reservationDate.getDate());
+        printSectionHeader(eventHeader);
+    }
+
+
+    private void displayOrderDetails(Orders orders) {
+        int totalOrderPrice = orders.getTotalPrice();
+        displayOrdersSection(orders);
+        disPlayTotalOrderPrice(totalOrderPrice);
+    }
+
+    private void displayDiscountDetails(DiscountDetails discountDetails,
+            GiftDtos giftDtos, int totalOrderPrice) {
+        int totalBenefit = calculateTotalBenefit(discountDetails, giftDtos);
+        int finalFee = totalOrderPrice - totalBenefit;
+        displayDiscountsSection(discountDetails);
+        displayGiftsSection(giftDtos);
+        disPlayTotalDiscount(totalBenefit);
+        displayFinalFee(finalFee);
+        displayBadge(Badge.getBadgeForAmount(totalBenefit));
+    }
+
+    private int calculateTotalBenefit(DiscountDetails discountDetails, GiftDtos giftDtos) {
+        return discountDetails.getTotalDiscount() + giftDtos.getTotalGiftValue();
     }
 
     private void displayOrdersSection(Orders orders) {
@@ -63,15 +81,14 @@ public class OutputView {
         output.print(DiscountFormatter.formatDiscountDetails(discountDetails));
     }
 
-    private void disPlayTotalDiscount(DiscountDetails discountDetails, GiftDtos gifts) {
+    private void disPlayTotalDiscount(int totalBenefit) {
         printSectionHeader(DISCOUNT_AMOUNT.getMessage());
-        output.print(MoneyFormatter.formatMoney(
-                discountDetails.getTotalDiscount() + gifts.getTotalGiftValue()));
+        output.print(MoneyFormatter.formatMoney(totalBenefit));
     }
 
-    private void displayFinalFee(Orders orders, DiscountDetails discountDetails) {
+
+    private void displayFinalFee(int totalFee) {
         printSectionHeader(FINAL_PAYMENT_AMOUNT.getMessage());
-        int totalFee = (orders.getTotalPrice() - discountDetails.getTotalDiscount());
         output.print(MoneyFormatter.formatMoney(totalFee));
     }
 
@@ -83,4 +100,5 @@ public class OutputView {
     private void printSectionHeader(String header) {
         output.print(SECTION_START.getValue() + header + SECTION_END.getValue());
     }
+
 }
