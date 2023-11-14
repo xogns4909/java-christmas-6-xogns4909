@@ -1,4 +1,4 @@
-package christmas.domain.badge;
+package christmas.domain.model;
 
 import java.util.Arrays;
 

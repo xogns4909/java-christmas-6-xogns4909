@@ -1,7 +1,7 @@
 package view.inputView;
 
-import christmas.domain.OrderItem;
-import christmas.domain.Orders;
+import christmas.domain.model.OrderItem;
+import christmas.domain.model.Orders;
 import christmas.domain.factory.OrderItemFactory;
 import java.util.List;
 import util.convertor.StringToIntegerConvertor;

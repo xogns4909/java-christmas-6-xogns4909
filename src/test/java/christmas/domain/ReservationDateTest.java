@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.domain.model.DomainErrorMessages;
+import christmas.domain.model.ReservationDate;
 import java.time.DayOfWeek;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

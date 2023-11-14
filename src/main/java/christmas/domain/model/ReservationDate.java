@@ -1,12 +1,13 @@
-package christmas.domain;
+package christmas.domain.model;
+
+import static christmas.PlannerConfig.*;
 
 import java.time.DateTimeException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.Month;
+
 public class ReservationDate {
-    private static final int YEAR = 2023;
-    private static final Month MONTH = Month.DECEMBER;
+
     private int date;
     private DayOfWeek dayOfWeek;
 
@@ -18,7 +19,7 @@ public class ReservationDate {
 
     private LocalDate validateDate(int date) {
         try {
-            return LocalDate.of(YEAR, MONTH, date);
+            return LocalDate.of(EVENT_YEAR.getValue(), EVENT_MONTH.getValue(), date);
         } catch (DateTimeException e) {
             throw new IllegalArgumentException(DomainErrorMessages.INVALID_DATE.getMessage());
         }
@@ -28,7 +29,7 @@ public class ReservationDate {
         return dayOfWeek;
     }
 
-    public int getDate(){
+    public int getDate() {
         return date;
     }
 

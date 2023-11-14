@@ -1,6 +1,6 @@
 package christmas.domain.discount;
 
-public enum DiscountConfig {
+enum DiscountConfig {
 
     WEEKDAY_DESSERT_DISCOUNT(2023),
     WEEKEND_MAIN_DISCOUNT(2023),

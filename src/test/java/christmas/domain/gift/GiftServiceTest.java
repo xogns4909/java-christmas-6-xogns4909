@@ -1,8 +1,8 @@
 package christmas.domain.gift;
 
-import christmas.domain.MenuItem;
-import christmas.domain.OrderItem;
-import christmas.domain.Orders;
+import christmas.domain.model.MenuItem;
+import christmas.domain.model.OrderItem;
+import christmas.domain.model.Orders;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.api.DisplayName;

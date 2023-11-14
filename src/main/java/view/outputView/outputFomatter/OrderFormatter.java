@@ -1,8 +1,7 @@
 package view.outputView.outputFomatter;
 
-import christmas.domain.Orders;
-import christmas.domain.OrderItem;
-import view.outputView.PrintMessages;
+import christmas.domain.model.Orders;
+import christmas.domain.model.OrderItem;
 
 import static util.Constants.*;
 import static view.outputView.PrintMessages.*;

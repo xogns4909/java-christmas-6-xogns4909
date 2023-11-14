@@ -1,7 +1,7 @@
-package christmas.domain;
+package christmas.domain.model;
 
 import static christmas.PlannerConfig.*;
-import static christmas.domain.DomainErrorMessages.*;
+import static christmas.domain.model.DomainErrorMessages.*;
 
 import java.util.ArrayList;
 import java.util.List;

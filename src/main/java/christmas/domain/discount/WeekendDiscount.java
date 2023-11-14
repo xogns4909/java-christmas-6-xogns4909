@@ -2,9 +2,9 @@ package christmas.domain.discount;
 
 import static christmas.domain.discount.DiscountConfig.WEEKEND_MAIN_DISCOUNT;
 
-import christmas.domain.OrderItem;
-import christmas.domain.Orders;
-import christmas.domain.ReservationDate;
+import christmas.domain.model.OrderItem;
+import christmas.domain.model.Orders;
+import christmas.domain.model.ReservationDate;
 import java.time.DayOfWeek;
 
 public class WeekendDiscount implements Discount {

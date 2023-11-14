@@ -2,8 +2,8 @@ package christmas.domain.gift;
 
 import static christmas.domain.gift.GiftConfig.*;
 
-import christmas.domain.MenuItem;
-import christmas.domain.Orders;
+import christmas.domain.model.MenuItem;
+import christmas.domain.model.Orders;
 import java.util.ArrayList;
 import java.util.List;
 

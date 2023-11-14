@@ -2,8 +2,8 @@ package christmas.domain.discount;
 
 import static christmas.domain.discount.DiscountConfig.*;
 
-import christmas.domain.Orders;
-import christmas.domain.ReservationDate;
+import christmas.domain.model.Orders;
+import christmas.domain.model.ReservationDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;

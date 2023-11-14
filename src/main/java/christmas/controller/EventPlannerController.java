@@ -2,8 +2,8 @@ package christmas.controller;
 
 import static christmas.controller.ControllerErrorMessages.*;
 
-import christmas.domain.Orders;
-import christmas.domain.ReservationDate;
+import christmas.domain.model.Orders;
+import christmas.domain.model.ReservationDate;
 import christmas.domain.discount.DiscountDetails;
 import christmas.domain.discount.DiscountService;
 import christmas.domain.gift.GiftDto;

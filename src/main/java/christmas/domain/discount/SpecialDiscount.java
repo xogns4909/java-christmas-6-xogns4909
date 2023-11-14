@@ -3,8 +3,8 @@ package christmas.domain.discount;
 import static christmas.PlannerConfig.*;
 import static christmas.domain.discount.DiscountConfig.*;
 
-import christmas.domain.Orders;
-import christmas.domain.ReservationDate;
+import christmas.domain.model.Orders;
+import christmas.domain.model.ReservationDate;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 

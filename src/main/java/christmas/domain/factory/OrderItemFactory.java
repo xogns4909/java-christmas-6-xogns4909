@@ -2,11 +2,10 @@ package christmas.domain.factory;
 
 import static util.Constants.*;
 
-import christmas.domain.MenuItem;
-import christmas.domain.OrderItem;
+import christmas.domain.model.MenuItem;
+import christmas.domain.model.OrderItem;
 import java.util.List;
 import java.util.stream.Collectors;
-import util.Constants;
 import util.convertor.StringToIntegerConvertor;
 
 public class OrderItemFactory {

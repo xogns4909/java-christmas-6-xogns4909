@@ -1,6 +1,6 @@
-package christmas.domain;
+package christmas.domain.model;
 
-import static christmas.domain.DomainErrorMessages.*;
+import static christmas.domain.model.DomainErrorMessages.*;
 
 import christmas.PlannerConfig;
 public class OrderItem {

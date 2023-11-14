@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import christmas.domain.factory.OrderItemFactory;
+import christmas.domain.model.OrderItem;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;

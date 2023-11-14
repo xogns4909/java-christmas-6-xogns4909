@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.model;
 
 enum  DomainErrorMessages {
     INVALID_DATE("유효하지 않은 날짜입니다"),

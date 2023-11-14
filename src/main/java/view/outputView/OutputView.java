@@ -1,8 +1,8 @@
 package view.outputView;
 
-import christmas.domain.Orders;
-import christmas.domain.ReservationDate;
-import christmas.domain.badge.Badge;
+import christmas.domain.model.Orders;
+import christmas.domain.model.ReservationDate;
+import christmas.domain.model.Badge;
 import christmas.domain.discount.DiscountDetails;
 import christmas.domain.gift.GiftDto;
 import java.util.List;

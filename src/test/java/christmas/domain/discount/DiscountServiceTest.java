@@ -1,6 +1,9 @@
 package christmas.domain.discount;
 
-import christmas.domain.*;
+import christmas.domain.model.MenuItem;
+import christmas.domain.model.OrderItem;
+import christmas.domain.model.Orders;
+import christmas.domain.model.ReservationDate;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

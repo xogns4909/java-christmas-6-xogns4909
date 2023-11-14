@@ -1,14 +1,15 @@
 package christmas.domain.discount;
 
+import christmas.domain.model.MenuItem;
+import christmas.domain.model.OrderItem;
+import christmas.domain.model.Orders;
+import christmas.domain.model.ReservationDate;
 import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.api.DisplayName;
 import static org.assertj.core.api.Assertions.assertThat;
-
-import christmas.domain.discount.SpecialDiscount;
-import christmas.domain.*;
 
 class SpecialDiscountTest {
 

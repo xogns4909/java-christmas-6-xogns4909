@@ -1,5 +1,9 @@
 package christmas.domain;
 
+import christmas.domain.model.DomainErrorMessages;
+import christmas.domain.model.MenuItem;
+import christmas.domain.model.OrderItem;
+import christmas.domain.model.Orders;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;

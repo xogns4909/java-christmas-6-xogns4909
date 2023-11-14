@@ -1,5 +1,8 @@
 package christmas.fommater;
 
+import christmas.domain.model.MenuItem;
+import christmas.domain.model.OrderItem;
+import christmas.domain.model.Orders;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -9,7 +12,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.stream.Stream;
 import java.util.List;
-import christmas.domain.*;
 import view.outputView.outputFomatter.OrderFormatter;
 
 class OrderFormatterTest {
