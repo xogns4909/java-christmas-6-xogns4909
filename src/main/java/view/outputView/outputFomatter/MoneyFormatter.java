@@ -1,4 +1,4 @@
-package view.outputView;
+package view.outputView.outputFomatter;
 
 import static view.outputView.PrintMessages.*;
 
