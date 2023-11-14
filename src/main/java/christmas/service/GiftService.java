@@ -1,5 +1,7 @@
-package christmas.domain.gift;
+package christmas.service;
 
+import christmas.domain.gift.GiftDto;
+import christmas.domain.gift.GiftPolicy;
 import christmas.domain.model.Orders;
 import java.util.List;
 

@@ -1,6 +1,7 @@
 package christmas.domain;
 
-import christmas.domain.model.DomainErrorMessages;
+
+import christmas.PlannerErrorMessages;
 import christmas.domain.model.MenuItem;
 import christmas.domain.model.OrderItem;
 import christmas.domain.model.Orders;
@@ -9,6 +10,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.api.DisplayName;
 
+import static christmas.PlannerErrorMessages.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -45,7 +47,7 @@ class OrdersTest {
     void DuplicateItemsExceptionTest(List<OrderItem> orderItems) {
         assertThatThrownBy(() -> new Orders(orderItems))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(DomainErrorMessages.DUPLICATE_MENU_ITEM.getMessage());
+                .hasMessageContaining(DUPLICATE_MENU_ITEM.getMessage());
     }
 
     static Stream<List<OrderItem>> invalidOrderItemList() {

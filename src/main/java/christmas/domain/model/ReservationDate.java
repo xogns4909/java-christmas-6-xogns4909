@@ -1,5 +1,6 @@
 package christmas.domain.model;
 
+import static christmas.PlannerErrorMessages.*;
 import static christmas.PlannerConfig.*;
 
 import java.time.DateTimeException;
@@ -21,7 +22,7 @@ public class ReservationDate {
         try {
             return LocalDate.of(EVENT_YEAR.getValue(), EVENT_MONTH.getValue(), date);
         } catch (DateTimeException e) {
-            throw new IllegalArgumentException(DomainErrorMessages.INVALID_DATE.getMessage());
+            throw new IllegalArgumentException(INVALID_DATE.getMessage());
         }
     }
 

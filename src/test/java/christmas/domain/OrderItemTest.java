@@ -1,12 +1,14 @@
 package christmas.domain;
 
+import christmas.PlannerErrorMessages;
 import christmas.domain.model.MenuItem;
 import christmas.domain.model.OrderItem;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.api.DisplayName;
 
-import static christmas.domain.model.DomainErrorMessages.*;
+
+import static christmas.PlannerErrorMessages.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

@@ -1,11 +1,13 @@
 package christmas.domain;
 
-import christmas.domain.model.DomainErrorMessages;
+import christmas.PlannerErrorMessages;
 import christmas.domain.model.ReservationDate;
 import java.time.DayOfWeek;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.api.DisplayName;
+
+import static christmas.PlannerErrorMessages.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -25,6 +27,6 @@ class ReservationDateTest {
     void failInvalidDay(int day) {
         assertThatThrownBy(() -> new ReservationDate(day))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(DomainErrorMessages.INVALID_DATE.getMessage());
+                .hasMessageContaining(INVALID_DATE.getMessage());
     }
 }

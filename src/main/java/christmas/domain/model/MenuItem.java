@@ -1,5 +1,9 @@
 package christmas.domain.model;
 
+import static christmas.PlannerErrorMessages.*;
+
+import christmas.PlannerErrorMessages;
+
 public enum MenuItem {
     MUSHROOM_SOUP("양송이수프", 6000,"Appetizer"),
     TAPAS("타파스", 5500,"Appetizer"),
@@ -43,7 +47,7 @@ public enum MenuItem {
                 return menu;
             }
         }
-        throw new IllegalArgumentException(DomainErrorMessages.INVALID_MENU.getMessage());
+        throw new IllegalArgumentException(INVALID_MENU.getMessage());
     }
 
     public boolean isBeverage() {

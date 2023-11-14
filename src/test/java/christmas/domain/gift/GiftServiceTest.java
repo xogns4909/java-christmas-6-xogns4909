@@ -3,6 +3,7 @@ package christmas.domain.gift;
 import christmas.domain.model.MenuItem;
 import christmas.domain.model.OrderItem;
 import christmas.domain.model.Orders;
+import christmas.service.GiftService;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.api.DisplayName;
