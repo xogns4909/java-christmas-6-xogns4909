@@ -4,11 +4,10 @@ package christmas.service;
 import static christmas.PlannerErrorMessages.*;
 
 import christmas.domain.discount.DiscountDetails;
-import christmas.domain.gift.GiftDto;
+import christmas.domain.gift.GiftDtos;
 import christmas.domain.gift.GiftPolicy;
 import christmas.domain.model.Orders;
 import christmas.domain.model.ReservationDate;
-import java.util.List;
 import view.inputView.InputView;
 import view.outputView.OutputView;
 import view.outputView.PrintMessages;
@@ -17,14 +16,14 @@ public class EventPlannerService {
 
 
     private final DiscountService discountService;
-    private final GiftPolicy giftPolicy;
+    private final GiftService giftService;
     private final InputView inputView;
     private final OutputView outputView;
 
     public EventPlannerService(DiscountService discountService, GiftPolicy giftPolicy,
             InputView inputView, OutputView outputView) {
         this.discountService = discountService;
-        this.giftPolicy = giftPolicy;
+        this.giftService = new GiftService(giftPolicy);
         this.inputView = inputView;
         this.outputView = outputView;
     }
@@ -33,7 +32,7 @@ public class EventPlannerService {
         outputView.requestAnnounce(PrintMessages.WELCOME_MESSAGE.getMessage());
         ReservationDate reservationDate = requestReservationDate();
         Orders orders = requestOrderMenu();
-        List<GiftDto> giftDtos = giftPolicy.applyGiftPolicy(orders);
+        GiftDtos giftDtos = giftService.calculateGifts(orders);
         DiscountDetails discountDetails = discountService.calculateTotalDiscount(orders,
                 reservationDate);
         outputView.displayEventDetails(reservationDate, orders, giftDtos, discountDetails);

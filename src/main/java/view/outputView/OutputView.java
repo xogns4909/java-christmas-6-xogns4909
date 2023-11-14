@@ -1,11 +1,10 @@
 package view.outputView;
 
+import christmas.domain.gift.GiftDtos;
 import christmas.domain.model.Orders;
 import christmas.domain.model.ReservationDate;
 import christmas.domain.model.Badge;
 import christmas.domain.discount.DiscountDetails;
-import christmas.domain.gift.GiftDto;
-import java.util.List;
 import view.outputView.outputFomatter.DiscountFormatter;
 import view.outputView.outputFomatter.GiftFormatter;
 import view.outputView.outputFomatter.MoneyFormatter;
@@ -23,14 +22,14 @@ public class OutputView {
     }
 
     public void displayEventDetails(ReservationDate reservationDate, Orders orders,
-            List<GiftDto> giftDtos, DiscountDetails discountDetails) {
+            GiftDtos giftDtos, DiscountDetails discountDetails) {
         printSectionHeader(
                 String.format(PREVIEW_EVENT_BENEFITS.getMessage(), reservationDate.getDate()));
         displayOrdersSection(orders);
         disPlayTotalOrderPrice(orders.getTotalPrice());
         displayDiscountsSection(discountDetails);
         displayGiftsSection(giftDtos);
-        disPlayTotalDiscount(discountDetails);
+        disPlayTotalDiscount(discountDetails, giftDtos);
         displayFinalFee(orders, discountDetails);
         displayBadge(Badge.getBadgeForAmount(
                 orders.getTotalPrice() - discountDetails.getTotalDiscount()));
@@ -54,9 +53,9 @@ public class OutputView {
         output.print(MoneyFormatter.formatMoney(price));
     }
 
-    private void displayGiftsSection(List<GiftDto> giftDtos) {
+    private void displayGiftsSection(GiftDtos giftDtos) {
         printSectionHeader(GIFT_MENU.getMessage());
-        output.print(GiftFormatter.formatGiftDetails(giftDtos));
+        output.print(GiftFormatter.formatGiftDetails(giftDtos.gifts()));
     }
 
     private void displayDiscountsSection(DiscountDetails discountDetails) {
@@ -64,9 +63,10 @@ public class OutputView {
         output.print(DiscountFormatter.formatDiscountDetails(discountDetails));
     }
 
-    private void disPlayTotalDiscount(DiscountDetails discountDetails) {
+    private void disPlayTotalDiscount(DiscountDetails discountDetails, GiftDtos gifts) {
         printSectionHeader(DISCOUNT_AMOUNT.getMessage());
-        output.print(MoneyFormatter.formatMoney(discountDetails.getTotalDiscount()));
+        output.print(MoneyFormatter.formatMoney(
+                discountDetails.getTotalDiscount() + gifts.getTotalGiftValue()));
     }
 
     private void displayFinalFee(Orders orders, DiscountDetails discountDetails) {

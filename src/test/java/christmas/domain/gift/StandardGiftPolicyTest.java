@@ -20,8 +20,8 @@ class StandardGiftPolicyTest {
     @MethodSource("ordersWithGift")
     @DisplayName("샴페인 증정 테스트")
     void  WithGift(Orders orders) {
-        List<GiftDto> gifts = giftPolicy.applyGiftPolicy(orders);
-        assertThat(gifts).containsExactly(new GiftDto(MenuItem.CHAMPAGNE, 1));
+        GiftDtos gifts = giftPolicy.applyGiftPolicy(orders);
+        assertThat(gifts.gifts()).containsExactly(new GiftDto(MenuItem.CHAMPAGNE, 1));
     }
 
     private static Stream<Orders> ordersWithGift() {
@@ -36,8 +36,8 @@ class StandardGiftPolicyTest {
     @MethodSource("ordersWithoutGift")
     @DisplayName("증정품 없음 테스트")
     void WithoutGift(Orders orders) {
-        List<GiftDto> gifts = giftPolicy.applyGiftPolicy(orders);
-        assertThat(gifts).isEmpty();
+        GiftDtos gifts = giftPolicy.applyGiftPolicy(orders);
+        assertThat(gifts.gifts()).isEmpty();
     }
 
     private static Stream<Orders> ordersWithoutGift() {

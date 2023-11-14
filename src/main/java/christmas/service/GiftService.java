@@ -1,9 +1,9 @@
 package christmas.service;
 
 import christmas.domain.gift.GiftDto;
+import christmas.domain.gift.GiftDtos;
 import christmas.domain.gift.GiftPolicy;
 import christmas.domain.model.Orders;
-import java.util.List;
 
 public class GiftService {
 
@@ -13,13 +13,7 @@ public class GiftService {
         this.giftPolicy = giftPolicy;
     }
 
-    public long calculateGiftValue(Orders orders) {
-        return applyGiftPolicy(orders).stream()
-                .mapToLong(gift -> (long) gift.menuItem().getPrice() * gift.count())
-                .sum();
-    }
-
-    private List<GiftDto> applyGiftPolicy(Orders orders) {
+    public GiftDtos calculateGifts(Orders orders) {
         return giftPolicy.applyGiftPolicy(orders);
     }
 }

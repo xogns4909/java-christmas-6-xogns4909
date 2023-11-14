@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface GiftPolicy {
 
-    List<GiftDto> applyGiftPolicy(Orders orders);
+    GiftDtos applyGiftPolicy(Orders orders);
 }
